@@ -10,19 +10,30 @@ def iterative_prime(number):
         return ans
 
 
-
-
 def sieve_prime(number):
-    primes = [i for i in range(1, number+1)]
+    rn = round(number ** 0.5)
+    prime_bool = [True] * (number + 1)
+    prime_bool[0] = False
+    prime_bool[1] = False
     i = 2
-    while i < round(number**0.5) + 1:
-        if i in primes:
+    while i < rn + 1:
+        if prime_bool[i] == True:
             for j in range(i*2, number+1, i):
-                if j in primes:
-                    primes.remove(j)
+                prime_bool[j] = False
 
         i += 1
+
+    # Driver code
+    primes = []
+    for i in range(1, len(prime_bool)):
+        if prime_bool[i]:
+            primes.append(i)
+        else:
+            pass
+
     return primes
 
+
+
 print(iterative_prime(5))
-print(sieve_prime(23))
+print(sieve_prime(10**6))
