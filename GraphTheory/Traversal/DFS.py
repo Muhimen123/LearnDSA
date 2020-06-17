@@ -4,6 +4,8 @@ def dfs(graph, visited, node): #Implementation of DFS using recursion
         visited.add(node)
         for neighbours in graph[node]:
             dfs(graph, visited, neighbours)
+
+
 # Just a simple directional graph
 graph = {
     'A' : ['B', 'C', 'F'],
